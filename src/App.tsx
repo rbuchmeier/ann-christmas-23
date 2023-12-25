@@ -1,6 +1,7 @@
 import './App.css';
 import { Question } from './Question.tsx';
 import { useState } from 'react';
+import Stars from './Stars.tsx';
 
 function App() {
   const [result, setResult] = useState({
@@ -12,7 +13,8 @@ function App() {
     setResult({ ...result, [answer]: true });
   };
   return (
-    <div>
+    <div className="app">
+      <Stars />
       <h1>Merry Christmas!</h1>
       <div>
         <Question
@@ -22,7 +24,7 @@ function App() {
         />
         {result.born && (
           <span>
-            b<strong>orn</strong>
+            b<span className="highlight">orn</span>
           </span>
         )}
         <Question
@@ -32,7 +34,7 @@ function App() {
         />
         {result.hank && (
           <span>
-            <strong>Han</strong>k
+            <span className="highlight">Han</span>k
           </span>
         )}
         <Question
@@ -42,20 +44,18 @@ function App() {
         />
         {result.eve && (
           <span>
-            <strong>Ev</strong>e
+            <span className="highlight">Ev</span>e
           </span>
         )}
       </div>
       <div>
-        <span>
-          <strong>
-            {result.eve && 'Ev'}
-            {result.hank && 'an H'}
-            {result.born && 'orn'}
-          </strong>
+        <span className="highlight">
+          {result.eve && 'Ev'}
+          {result.hank && 'an H'}
+          {result.born && 'orn'}
         </span>
         {result.eve && result.hank && result.born && (
-          <span>(Check your email)</span>
+          <span>&nbsp;(Check your email)</span>
         )}
       </div>
     </div>
